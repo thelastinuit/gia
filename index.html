@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gianella Larreátegui Garcia | Modelo, Artista, Bailarina, Cantante</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="https://cdn.tailwindcss.com"></script>
 
     <style>
@@ -64,7 +65,6 @@
     <div class="bg-container" style="background-image: url('12.jpg')"></div>
     <div class="bg-container" style="background-image: url('13.jpg')"></div>
     <div class="bg-container" style="background-image: url('14.jpg')"></div>
-    <div class="bg-container" style="background-image: url('15.jpg')"></div>
 
     <div class="content">
       <h1 class="text-4xl font-bold mb-4">Gianella Larreátegui Garcia</h1>
@@ -73,53 +73,54 @@
     </div>
 
     <script>
-    const moveGallery = function(e) {
-      var oldVal = parseInt(document.body.style.transform.replace("translateY(","").replace("px)",""));
-      var variation = parseInt(e.deltaY);
-      const bgContainers = document.querySelectorAll('.bg-container');
-      const content = document.querySelector('.content');
+    $(document).ready(function() {
+      const moveGallery = function(e) {
+        var oldVal = parseInt(document.body.style.transform.replace("translateY(","").replace("px)",""));
+        var variation = parseInt(e.deltaY);
+        const bgContainers = document.querySelectorAll('.bg-container');
+        const content = document.querySelector('.content');
 
-      document.body.style.transform = "translateY(" + (oldVal - variation) + "px)";
+        document.body.style.transform = "translateY(" + (oldVal - variation) + "px)";
 
-      if ((oldVal - variation) > bgContainers[0].offsetHeight) 
+        if ((oldVal - variation) > bgContainers[0].offsetHeight) 
         document.body.style.transform = "translateY(" + bgContainers[0].offsetHeight + "px)";
-      if ((oldVal - variation) < -1*bgContainers[0].offsetHeight) 
+        if ((oldVal - variation) < -1*bgContainers[0].offsetHeight) 
         document.body.style.transform = "translateY(-" + bgContainers[0].offsetHeight + "px)";
 
-      let currentImageIndex = 0;
-      const scrollPosition = oldVal - variation;
-      const height = bgContainers[0].offsetHeight / 15;
-      const limit = bgContainers[0].offsetHeight;
+        let currentImageIndex = 0;
+        const scrollPosition = oldVal - variation;
+        const height = bgContainers[0].offsetHeight / 15;
+        const limit = bgContainers[0].offsetHeight;
 
-      bgContainers.forEach((node, index) => {
-        node.style.top = `${-1*scrollPosition}px`;
-        content.style.top = `calc(${-1*scrollPosition}px + ${0.80*node.offsetHeight}px)`;
-      })
+        bgContainers.forEach((node, index) => {
+          node.style.top = `${-1*scrollPosition}px`;
+          content.style.top = `calc(${-1*scrollPosition}px + ${0.80*node.offsetHeight}px)`;
+        })
 
-      const absScrollPosition = Math.abs(scrollPosition);
+        const absScrollPosition = Math.abs(scrollPosition);
 
-      if (absScrollPosition < limit) {
-        bgContainers[0].style.opacity = ((absScrollPosition >= 0) && (absScrollPosition <= height)) ? 1 : 0;
-        bgContainers[1].style.opacity = ((absScrollPosition > height) && (absScrollPosition <= height*2)) ? 1 : 0;
-        bgContainers[2].style.opacity = ((absScrollPosition > height*2) && (absScrollPosition <= height*3)) ? 1 : 0;
-        bgContainers[3].style.opacity = ((absScrollPosition > height*3) && (absScrollPosition <= height*4)) ? 1 : 0;
-        bgContainers[4].style.opacity = ((absScrollPosition > height*4) && (absScrollPosition <= height*5)) ? 1 : 0;
-        bgContainers[5].style.opacity = ((absScrollPosition > height*5) && (absScrollPosition <= height*6)) ? 1 : 0;
-        bgContainers[6].style.opacity = ((absScrollPosition > height*6) && (absScrollPosition <= height*7)) ? 1 : 0;
-        bgContainers[7].style.opacity = ((absScrollPosition > height*7) && (absScrollPosition <= height*8)) ? 1 : 0;
-        bgContainers[8].style.opacity = ((absScrollPosition > height*8) && (absScrollPosition <= height*9)) ? 1 : 0;
-        bgContainers[9].style.opacity = ((absScrollPosition > height*9) && (absScrollPosition <= height*10)) ? 1 : 0;
-        bgContainers[10].style.opacity = ((absScrollPosition > height*10) && (absScrollPosition <= height*11)) ? 1 : 0;
-        bgContainers[11].style.opacity = ((absScrollPosition > height*11) && (absScrollPosition <= height*12)) ? 1 : 0;
-        bgContainers[12].style.opacity = ((absScrollPosition > height*12) && (absScrollPosition <= height*13)) ? 1 : 0;
-        bgContainers[13].style.opacity = ((absScrollPosition > height*13) && (absScrollPosition <= height*14)) ? 1 : 0;
-        bgContainers[14].style.opacity = ((absScrollPosition > height*14) && (absScrollPosition <= height*15)) ? 1 : 0;
+        if (absScrollPosition < limit) {
+          bgContainers[0].style.opacity = ((absScrollPosition >= 0) && (absScrollPosition <= height)) ? 1 : 0;
+          bgContainers[1].style.opacity = ((absScrollPosition > height) && (absScrollPosition <= height*2)) ? 1 : 0;
+          bgContainers[2].style.opacity = ((absScrollPosition > height*2) && (absScrollPosition <= height*3)) ? 1 : 0;
+          bgContainers[3].style.opacity = ((absScrollPosition > height*3) && (absScrollPosition <= height*4)) ? 1 : 0;
+          bgContainers[4].style.opacity = ((absScrollPosition > height*4) && (absScrollPosition <= height*5)) ? 1 : 0;
+          bgContainers[5].style.opacity = ((absScrollPosition > height*5) && (absScrollPosition <= height*6)) ? 1 : 0;
+          bgContainers[6].style.opacity = ((absScrollPosition > height*6) && (absScrollPosition <= height*7)) ? 1 : 0;
+          bgContainers[7].style.opacity = ((absScrollPosition > height*7) && (absScrollPosition <= height*8)) ? 1 : 0;
+          bgContainers[8].style.opacity = ((absScrollPosition > height*8) && (absScrollPosition <= height*9)) ? 1 : 0;
+          bgContainers[9].style.opacity = ((absScrollPosition > height*9) && (absScrollPosition <= height*10)) ? 1 : 0;
+          bgContainers[10].style.opacity = ((absScrollPosition > height*10) && (absScrollPosition <= height*11)) ? 1 : 0;
+          bgContainers[11].style.opacity = ((absScrollPosition > height*11) && (absScrollPosition <= height*12)) ? 1 : 0;
+          bgContainers[12].style.opacity = ((absScrollPosition > height*12) && (absScrollPosition <= height*13)) ? 1 : 0;
+          bgContainers[13].style.opacity = ((absScrollPosition > height*13) && (absScrollPosition <= height*14)) ? 1 : 0;
+        }
+
+        return false;
       }
-
-      return false;
-    }
-    document.addEventListener("wheel", moveGallery, true);
-    document.addEventListener('touchmove', moveGallery);
+      document.addEventListener("wheel", moveGallery, true);
+      document.addEventListener('touchmove', moveGallery);
+    });
     </script>
   </body>
 </html> 
