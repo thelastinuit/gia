@@ -73,7 +73,7 @@
     </div>
 
     <script>
-    document.addEventListener("wheel", function (e) {
+    const moveGallery = function(e) {
       var oldVal = parseInt(document.body.style.transform.replace("translateY(","").replace("px)",""));
       var variation = parseInt(e.deltaY);
       const bgContainers = document.querySelectorAll('.bg-container');
@@ -117,7 +117,9 @@
       }
 
       return false;
-    }, true);
+    }
+    document.addEventListener("wheel", moveGallery, true);
+    document.addEventListener('touchmove', moveGallery);
     </script>
   </body>
 </html> 
